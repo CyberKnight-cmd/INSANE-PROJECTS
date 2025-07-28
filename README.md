@@ -1,4 +1,4 @@
-![INSANE-PROJECTS Banner](./Insane-Projects.png)
+![INSANE-PROJECTS](./Insane-Projects.png)
 
 # 🧠 INSANE-PROJECTS
 
