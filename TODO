@@ -1,6 +1,1 @@
 1. Get the "Finger Air Writing – Movement Reconstruction with Low-cost IMU Sensor" tech up and working.
-
-# Step 1: Create an orphan branch with no history
-git checkout --orphan Mind-sketch
-
-git branch -D Mind-sketch-clean
