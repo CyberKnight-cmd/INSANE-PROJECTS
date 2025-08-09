@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Guardian - Risk Prediction Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      padding-top: 20px;
+    }
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .card-header {
+      background-color: #343a40;
+      color: white;
+      border-radius: 10px 10px 0 0 !important;
+      padding: 15px 20px;
+    }
+    .form-label {
+      font-weight: 600;
+    }
+    .risk-score {
+      font-size: 3rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .risk-low {
+      color: #28a745;
+    }
+    .risk-medium {
+      color: #ffc107;
+    }
+    .risk-high {
+      color: #dc3545;
+    }
+    .explanation {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    .alternative {
+      background-color: #f1f8ff;
+      border-left: 4px solid #0d6efd;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .loading {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">AI Guardian - Risk Prediction Demo</h1>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">Route Information</h5>
+          </div>
+          <div class="card-body">
+            <form id="risk-form">
+              <div class="mb-3">
+                <label for="start" class="form-label">Start Location (latitude,longitude)</label>
+                <input type="text" class="form-control" id="start" value="37.7749,-122.4194" required>
+                <div class="form-text">Example: 37.7749,-122.4194 (San Francisco)</div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="end" class="form-label">End Location (latitude,longitude)</label>
+                <input type="text" class="form-control" id="end" value="37.7849,-122.4094" required>
+                <div class="form-text">Example: 37.7849,-122.4094 (North Beach)</div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="mode" class="form-label">Travel Mode</label>
+                <select class="form-select" id="mode" required>
+                  <option value="walking">Walking</option>
+                  <option value="driving">Driving</option>
+                  <option value="cycling">Cycling</option>
+                  <option value="transit">Public Transit</option>
+                </select>
+              </div>
+              
+              <button type="submit" class="btn btn-primary w-100">Check Route Safety</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">Risk Assessment</h5>
+          </div>
+          <div class="card-body">
+            <div id="loading" class="loading">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mt-2">Analyzing route safety...</p>
+            </div>
+            
+            <div id="results" style="display: none;">
+              <h2>Risk Score</h2>
+              <div id="risk-score" class="risk-score">--</div>
+              
+              <h4>Explanation</h4>
+              <p id="explanation" class="explanation">--</p>
+              
+              <h4>Safer Alternatives</h4>
+              <div id="alternatives">
+                <p class="text-muted">No alternatives available</p>
+              </div>
+            </div>
+            
+            <div id="error" class="alert alert-danger" style="display: none;">
+              <h4>Error</h4>
+              <p id="error-message">--</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('risk-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const start = document.getElementById('start').value;
+      const end = document.getElementById('end').value;
+      const mode = document.getElementById('mode').value;
+      
+      // Show loading, hide results and error
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('results').style.display = 'none';
+      document.getElementById('error').style.display = 'none';
+      
+      try {
+        // Call the API
+        const response = await fetch('/api/risk/route', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ start, end, mode })
+        });
+        
+        // Hide loading
+        document.getElementById('loading').style.display = 'none';
+        
+        if (response.ok) {
+          const data = await response.json();
+          
+          // Display results
+          document.getElementById('results').style.display = 'block';
+          
+          // Set risk score with appropriate color
+          const riskScoreElement = document.getElementById('risk-score');
+          riskScoreElement.textContent = data.riskScore.toFixed(1);
+          
+          if (data.riskScore < 3) {
+            riskScoreElement.className = 'risk-score risk-low';
+          } else if (data.riskScore < 7) {
+            riskScoreElement.className = 'risk-score risk-medium';
+          } else {
+            riskScoreElement.className = 'risk-score risk-high';
+          }
+          
+          // Set explanation
+          document.getElementById('explanation').textContent = data.explanation;
+          
+          // Set alternatives
+          const alternativesElement = document.getElementById('alternatives');
+          
+          if (data.saferAlternatives && data.saferAlternatives.length > 0) {
+            let alternativesHTML = '';
+            
+            data.saferAlternatives.forEach(alt => {
+              alternativesHTML += `
+                <div class="alternative">
+                  <div class="d-flex justify-content-between">
+                    <strong>Risk Score: ${alt.riskScore.toFixed(1)}</strong>
+                    <span>
+                      <span class="badge bg-info me-1">${alt.distanceIncrease}</span>
+                      <span class="badge bg-warning">${alt.timeIncrease}</span>
+                    </span>
+                  </div>
+                  <p class="mb-0 mt-2">${alt.description}</p>
+                </div>
+              `;
+            });
+            
+            alternativesElement.innerHTML = alternativesHTML;
+          } else {
+            alternativesElement.innerHTML = '<p class="text-muted">No safer alternatives available</p>';
+          }
+          
+        } else {
+          // Show error
+          const errorData = await response.json();
+          document.getElementById('error').style.display = 'block';
+          document.getElementById('error-message').textContent = errorData.error || 'An error occurred';
+        }
+        
+      } catch (error) {
+        // Hide loading, show error
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error').style.display = 'block';
+        document.getElementById('error-message').textContent = 'Could not connect to the server. Is it running?';
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+</html>

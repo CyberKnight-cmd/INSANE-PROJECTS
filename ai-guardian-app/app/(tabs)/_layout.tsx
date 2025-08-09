@@ -1,44 +1,60 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
-
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
+import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  
   return (
     <Tabs
       screenOptions={{
+        headerShown: true,
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
+        tabBarStyle: {
+          elevation: 5,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: -2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 3,
+          borderTopWidth: 0,
+        },
+      }}
+    >
+      <Tabs.Screen 
+        name="index" 
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
+          tabBarIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color} />,
+          headerTitle: 'AI Guardian',
+        }} 
       />
-      <Tabs.Screen
-        name="explore"
+      
+      <Tabs.Screen 
+        name="safety" 
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
+          title: 'Safety',
+          tabBarIcon: ({ color, size }) => <Ionicons name="shield-outline" size={size} color={color} />,
+          headerTitle: 'Safety Features',
+        }} 
+      />
+      
+      <Tabs.Screen 
+        name="maps" 
+        options={{
+          title: 'Map',
+          tabBarIcon: ({ color, size }) => <Ionicons name="map-outline" size={size} color={color} />,
+          headerTitle: 'Safe Routes',
+        }} 
+      />
+      
+      <Tabs.Screen 
+        name="profile" 
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, size }) => <Ionicons name="person-outline" size={size} color={color} />,
+          headerTitle: 'Your Profile',
+        }} 
       />
     </Tabs>
   );

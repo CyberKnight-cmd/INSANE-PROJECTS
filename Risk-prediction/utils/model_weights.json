@@ -1,0 +1,11 @@
+{
+  "weights": {
+    "crimeRate": 0.25,
+    "lightingLevel": 0.15,
+    "weatherCondition": 0.10,
+    "trafficDensity": 0.20,
+    "emergencyResponseTime": 0.15,
+    "routeComplexity": 0.15
+  },
+  "modelAccuracy": 0.85
+}

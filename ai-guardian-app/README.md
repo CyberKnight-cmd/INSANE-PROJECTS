@@ -1,50 +1,128 @@
-# Welcome to your Expo app 👋
+# AI Guardian — Women's Safety Edition
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A GenAI-powered personal safety companion for women — predictive risk alerts, discreet SOS, and AI-driven situational awareness.
 
-## Get started
+## Overview
 
-1. Install dependencies
+AI Guardian is a mobile app that uses location, computer-vision, voice-sentiment, and GenAI summarization to predict risk, prevent incidents, and rapidly notify trusted contacts and authorities when a user is unsafe.
 
-   ```bash
-   npm install
-   ```
+## Primary Goals
 
-2. Start the app
+- Prevent incidents by proactively warning users about risky routes/areas
+- Provide fast, discreet help when danger occurs (multimodal SOS)
+- Give concise, actionable intelligence to responders via GenAI summaries
+- Empower users through training and realistic preparedness simulations
 
-   ```bash
-   npx expo start
-   ```
+## Target Users
 
-In the output, you'll find options to open the app in a
+- Women commuting late nights / late-shift workers / students walking alone
+- Guardians/parents, security volunteers, campus police
+- Organizations (colleges, night-shift employers) for safer rosters
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Core Features
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Real-time Risk Prediction & Routing
+- Continuous location tracking (opt-in)
+- Risk score for current location & planned route (heatmap overlay)
+- GenAI assistant that explains why a route is risky and suggests safer alternatives
 
-## Get a fresh project
+### Automatic Check-ins & SafeTimer
+- Set a trip with expected ETA and auto-check intervals
+- Missed check-in escalates to SOS workflow
 
-When you're ready, run:
+### Discreet SOS (Voice, Gesture, Shake, Shortcut)
+- Trigger methods: code phrase, loud keyword, button, shake, long-press on lock-screen widget
+- On trigger: share live GPS, audio, short video, and last-known route to contacts & authorities
+
+### GenAI "Safety Cam" (Video + CV)
+- When SOS starts, record short clips and run light CV inference to detect threatening body language or number of people
+- GenAI produces a short natural-language summary for recipients: location + situation + immediate recommended action
+
+### SmartVoice Shield (Voice Sentiment)
+- Background low-power voice sentiment/urgency classifier (on-device if possible)
+- If threshold crossed (stress / panic), prep SOS and alert user before sending
+
+### SafeRide Mode
+- Verify driver & vehicle details (OCR on license/plate)
+- Monitor route deviation and send alerts on unusual detours
+
+### Nearby Helpers Network & Crowd Assist
+- Show verified volunteers/security guards within radius who can respond
+- Option to ping nearest helpers with ETA and location
+
+### Incident Reporting & GenAI CrimeSummarizer
+- One-tap incident report that drafts a concise, shareable report using GenAI (for police/helplines)
+- Summarize local incident trends (pull from public feeds / uploaded reports) in plain language
+
+### Safe Companion Mode & Behavioral Tricks
+- Conversational GenAI companion to "keep you company" when walking
+- Option: play a simulated call / loud voice line if you want to deter a threat
+
+### Training Mode (Threat Simulator)
+- Simulated scenarios (audio + text) to teach de-escalation, discreet SOS triggers, and escape planning
+
+## Technical Architecture
+
+### Frontend (Mobile)
+- React Native for cross-platform mobile development
+- Handles UI, permissions, minor on-device ML (voice sentiment), camera capture, and secure local encryption
+
+### Backend (Serverless)
+- REST API (Node/Python) for user management, push notifications, GenAI orchestration, storing encrypted incident data
+
+### GenAI Services
+- Large language model for summarization, Q&A and generating alerts
+- Lightweight vision model for object/person detection on saved clips (prefer on-device or edge inference for privacy)
+
+### Third-party APIs
+- Google Maps (routing, geocoding)
+- Twilio (SMS/calls)
+- SMS/voice provider for emergency calls
+- Optional crime-data sources
+
+## Privacy & Safety Considerations
+
+- Explicit opt-in for all continuous monitoring features
+- On-device processing preference for voice and vision to reduce raw data sent to servers
+- End-to-end encryption for SOS messages & media to trusted contacts
+- Short retention window (e.g., auto-delete recordings after 30 days) unless user chooses to keep/report
+- Anonymized analytics only; no selling of safety/crime data
+- Legal compliance: Follow local laws for recording/automated reporting; show clear consent screens
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- Expo CLI
+- React Native development environment
+
+### Installation
 
 ```bash
-npm run reset-project
+# Clone the repository
+git clone https://github.com/yourusername/ai-guardian-app.git
+
+# Navigate to the project directory
+cd ai-guardian-app
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Running on a Device
 
-## Learn more
+- Install the Expo Go app on your iOS or Android device
+- Scan the QR code from the Expo development server
+- Or run on an emulator/simulator using `npm run android` or `npm run ios`
 
-To learn more about developing your project with Expo, look at the following resources:
+## Contributing
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Join the community
+## License
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License - see the LICENSE file for details.
