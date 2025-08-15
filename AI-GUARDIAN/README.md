@@ -1,114 +1,73 @@
-# 🛡️ AI Guardian — Women’s Safety Edition (GenAI Enhanced)
+# Welcome to your Lovable project
 
-> A GenAI-powered personal safety companion for women — predictive risk alerts, discreet SOS, and AI-driven situational awareness.
+## Project info
 
----
+**URL**: https://lovable.dev/projects/b8201588-4eaa-4cd5-a12d-b3655de69a19
 
-## 📌 Overview
-**AI Guardian** is a mobile app that leverages **location data, computer vision, voice sentiment analysis, and generative AI** to **predict risk, prevent incidents, and rapidly notify trusted contacts or authorities** when a user is unsafe.
+## How can I edit this code?
 
-Designed for **48-hour hackathon MVP**, the app focuses on **speed, discretion, and actionable intelligence** during emergencies — while maintaining **privacy and user control**.
+There are several ways of editing your application.
 
----
+**Use Lovable**
 
-## 🎯 Key Features (MVP Scope)
-- **Real-time Risk Prediction** — Route risk score + safer alternatives with GenAI explanations.
-- **SafeTimer & Auto Check-ins** — Missed check-in → auto SOS escalation.
-- **Discreet SOS Triggers** — Voice code phrase, shake, button, lock-screen widget.
-- **GenAI “Safety Cam”** — Short video/audio clip analysis → concise natural-language summary to responders.
-- **SmartVoice Shield** — On-device sentiment detection to preemptively prepare SOS.
-- **SafeRide Mode** — Verify driver & route deviation alerts.
-- **GenAI CrimeSummarizer** — Convert raw incident feeds into plain-language safety briefs.
-- **Training Mode** — Threat simulations to teach preparedness and discreet alerts.
+Simply visit the [Lovable Project](https://lovable.dev/projects/b8201588-4eaa-4cd5-a12d-b3655de69a19) and start prompting.
 
----
+Changes made via Lovable will be committed automatically to this repo.
 
-## 🛠 Tech Stack (MVP)
-| Layer            | Technology |
-|------------------|------------|
-| Frontend (App)   | React Native / Thunkable |
-| Maps & Routing   | Google Maps API |
-| Messaging / Calls| Twilio SMS & Voice API |
-| Auth & Database  | Firebase Auth + Firestore |
-| GenAI Services   | OpenAI API (LLM for summarization & chat) |
-| CV & Voice       | TensorFlow Lite (on-device), mocked for MVP |
-| Hosting          | Firebase Functions / Vercel |
+**Use your preferred IDE**
 
----
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-## ⚙️ Architecture (Simplified)
-1. **User Device** — UI, GPS, camera, on-device ML for voice sentiment.
-2. **Backend API** — User auth, incident data storage, SOS dispatch orchestration.
-3. **GenAI Layer** — Summarization of incident reports, SOS context building, safety tips.
-4. **Third-party APIs** — Google Maps, Twilio, optional crime-data sources.
-5. **Storage** — Encrypted Firestore for minimal incident data retention (default 30 days).
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
----
+Follow these steps:
 
-## 🔒 Privacy & Safety
-- **Opt-in** for continuous monitoring.
-- **On-device** processing for sensitive voice/vision tasks where possible.
-- **End-to-end encryption** for SOS messages & media.
-- **Minimal data retention** — auto-delete unless flagged for reporting.
-- **Clear legal compliance** with recording & reporting laws.
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
----
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
 
-## 🚀 Quick Start (Dev Setup)
-```bash
-# 1️⃣ Clone the repo
-git clone https://github.com/cyberknight-cmd/INSANE-PROJECTS/tree/ai-guaridan.git
-cd ai-guardian
+# Step 3: Install the necessary dependencies.
+npm i
 
-# 2️⃣ Install dependencies
-npm install
-
-# 3️⃣ Create .env and add:
-# GOOGLE_MAPS_API_KEY=
-# TWILIO_SID=
-# TWILIO_AUTH_TOKEN=
-# OPENAI_API_KEY=
-# FIREBASE_CONFIG=
-
-# 4️⃣ Start the dev server
-npm start
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
 ```
 
----
+**Edit a file directly in GitHub**
 
-## 🧪 Hackathon MVP Demo Flow
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-1. **Set Trip** → See route risk score & GenAI safety tips.
-2. **Trigger SOS** (e.g., whisper code phrase) → GPS, short clip, and GenAI summary sent to trusted contacts.
-3. **SafeRide Mode** → Scan driver ID → detect route deviation.
-4. **View Incident Feed** → Read AI-generated summaries of nearby incidents.
+**Use GitHub Codespaces**
 
----
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## 📊 Success Metrics
+## What technologies are used for this project?
 
-* **SOS trigger → contact alert** in **<15s**.
-* **GenAI summaries** rated useful by users.
-* **False-positive rate** for voice sentiment <5%.
+This project is built with:
 
----
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
-## 📅 Hackathon Build Plan
+## How can I deploy this project?
 
-* **Day 1:** Core flows — Login, Map View, SafeTimer, basic SOS via Twilio.
-* **Day 2:** GenAI summaries, mocked Safety Cam & voice trigger, UI polish.
+Simply open [Lovable](https://lovable.dev/projects/b8201588-4eaa-4cd5-a12d-b3655de69a19) and click on Share -> Publish.
 
----
+## Can I connect a custom domain to my Lovable project?
 
-## 📜 License
+Yes, you can!
 
-MIT — Free to use, modify, and distribute with attribution.
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
----
-
-## 🙌 Acknowledgements
-
-* OpenAI for LLM APIs
-* Google Maps API
-* Twilio SMS/Voice
-* TensorFlow Lite
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

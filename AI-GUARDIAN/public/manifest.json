@@ -1,0 +1,46 @@
+{
+  "name": "AI Guardian",
+  "short_name": "AIGuardian",
+  "description": "Personal safety app with emergency features",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.aiguardian"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://itunes.apple.com/app/aiguardian"
+    }
+  ],
+  "prefer_related_applications": true,
+  "shortcuts": [
+    {
+      "name": "Emergency",
+      "short_name": "SOS",
+      "description": "Activate emergency mode",
+      "url": "/emergency"
+    },
+    {
+      "name": "Safety Check",
+      "short_name": "Check",
+      "description": "Perform safety check-in",
+      "url": "/safety-check"
+    }
+  ]
+}

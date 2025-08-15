@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "date": "2025-07-22T14:30:00.000Z",
+    "description": "A cybersecurity incident reported by a downtown financial firm, data breach under investigation.",
+    "type": "Cybercrime"
+  },
+  {
+    "id": 2,
+    "date": "2024-11-10T22:15:00.000Z",
+    "description": "A vehicle was reported stolen from the Northgate shopping center parking lot. The car is a 2022 red Ford Mustang.",
+    "type": "Vehicle Theft"
+  },
+  {
+    "id": 3,
+    "date": "2023-08-15T19:45:00.000Z",
+    "description": "Vandalism reported at the city park. Graffiti was found on a public bench near the main fountain.",
+    "type": "Vandalism"
+  },
+  {
+    "id": 4,
+    "date": "2023-05-20T11:00:00.000Z",
+    "description": "Shoplifting incident at a local electronics store. Suspect apprehended by store security.",
+    "type": "Shoplifting"
+  },
+  {
+    "id": 5,
+    "date": "2022-09-05T03:15:00.000Z",
+    "description": "Break-in at a residential property on Elm Street. Electronics were reported stolen.",
+    "type": "Burglary"
+  },
+  {
+    "id": 6,
+    "date": "2021-12-24T23:00:00.000Z",
+    "description": "A minor hit-and-run incident occurred at the intersection of First and Main. No injuries.",
+    "type": "Hit and Run"
+  },
+  {
+    "id": 7,
+    "date": "2020-02-18T18:30:00.000Z",
+    "description": "Report of a loud public disturbance involving multiple individuals near the park entrance.",
+    "type": "Public Disturbance"
+  },
+  {
+    "id": 8,
+    "date": "2019-10-31T21:00:00.000Z",
+    "description": "Illegal firework usage reported in a residential neighborhood, causing noise complaints.",
+    "type": "Mischief"
+  },
+  {
+    "id": 9,
+    "date": "2018-07-04T15:00:00.000Z",
+    "description": "Theft of a package from a residential porch on Oak Avenue. Captured on a security camera.",
+    "type": "Package Theft"
+  },
+  {
+    "id": 10,
+    "date": "2017-04-01T12:00:00.000Z",
+    "description": "A fraudulent street performance scam was reported near the tourist plaza. No money was lost.",
+    "type": "Fraud"
+  },
+  {
+    "id": 11,
+    "date": "2016-01-15T08:45:00.000Z",
+    "description": "A case of identity theft was reported online, originating from a phishing email.",
+    "type": "Identity Theft"
+  },
+  {
+    "id": 12,
+    "date": "2015-06-30T16:20:00.000Z",
+    "description": "Minor property damage due to a traffic collision. Both parties exchanged insurance information.",
+    "type": "Traffic Incident"
+  }
+]
